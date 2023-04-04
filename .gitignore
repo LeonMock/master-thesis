@@ -1,0 +1,13 @@
+.ipynb_checkpoints
+*.nc
+*.npy
+*.npy.gz
+
+# don't track executed notebooks
+./notebooks_executed/**
+# except the example one...
+!./notebooks_executed/exploratory/2022-07-12_add-and-check-station-data.ipynb
+
+# don't track container images
+*.sif
+*.pyc
