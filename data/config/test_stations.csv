@@ -2,3 +2,7 @@ release_zone,latitude,longitude,depth_meters
 Test_001,-23.25,8.25,200
 Test_002,-23.25,8.25,800
 Test_003,-23.25,8.25,10
+Test_4000,-23.25,8.25,4000
+Test_Column,-23.25,8.25,4000
+Test_2000,-23.25,8.25,2000
+Test_1500,-23.25,8.25,1500
