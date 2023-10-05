@@ -1,0 +1,39 @@
+#!/bin/bash
+#SBATCH --job-name=INALT-column-backwards
+#SBATCH --ntasks=16
+#SBATCH --cpus-per-task=2
+#SBATCH --mem-per-cpu=24G
+#SBATCH --time=05:00:00
+#SBATCH --partition=cluster
+
+# make sure we have Singularity
+module load singularity/3.5.2
+
+# to get the image (need to be on a partition which has internet access --> data), run
+# $ singularity pull --disable-cache --dir "${PWD}" docker://quay.io/willirath/parcels-container:2022.07.14-801fbe4
+
+# make sure the output exists
+mkdir -p notebooks_executed
+
+for number_particles in \
+        10 30 100 300 1000 2000 3000 5000 7000 12000 15000 20000 30000 100000 300000 1000000; do
+    for release_zone in test_1500; do
+        for release_depth in 1500; do
+        # run for single notebook and put into background
+            srun --ntasks=1 --exclusive singularity run -B /sfs -B /gxfs_work1 -B $PWD:/work --pwd /work parcels-container_2022.07.14-801fbe4.sif bash -c \
+            ". /opt/conda/etc/profile.d/conda.sh && conda activate base \
+            && papermill --cwd notebooks \
+                notebooks/2023-06-09_test-INALT-column-backwards.ipynb \
+                notebooks_executed/2023-06-09_test-INALT-column_S-${release_zone}_N-${number_particles}-20090301_RT-42-backwards.ipynb \
+                -p release_zone ${release_zone} \
+                -p number_particles ${number_particles} \
+                -k python" &
+        done
+    done
+done
+
+# wait till background task is done
+wait
+
+# print resource infos
+jobinfo
