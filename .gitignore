@@ -3,6 +3,8 @@
 *.npy
 *.npy.gz
 *.out
+*.pdf
+*.png
 
 # don't track executed notebooks
 ./notebooks_executed/**
