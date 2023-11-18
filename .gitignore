@@ -2,6 +2,7 @@
 *.nc
 *.npy
 *.npy.gz
+*.out
 
 # don't track executed notebooks
 ./notebooks_executed/**
