@@ -4,7 +4,6 @@ authors:
 - family-names: "Mock"
   given-names: "Leon-Cornelius"
   orcid: "https://orcid.org/0000-0002-5888-8896"
-title: "master-thesis"
-version: 1.0.0
-date-released: 2023-12-22
+title: "Influence of the Model Formulation and Resolution on the Particle Spreading at the Ewing Seamount, Master Thesis Notebooks"
+date-released: 2023-12-21
 url: "https://github.com/LeonMock/master-thesis"
